@@ -9,7 +9,7 @@ import React from "react";
 const open_sans = Open_Sans({ subsets: ["latin"], weight: ["400", "700"] });
 
 export const metadata = {
-  title: "IHA Admin Dashboard",
+  title: "MedEquip Pro (V1.0)",
   description:
     "Efficiently manage and monitor all aspects of your platform with the Admin Dashboard. Access key metrics, user data, settings, and tools in one central hub for seamless administration.",
 };
