@@ -2,7 +2,7 @@ import { useEffect, useState, ComponentType } from "react";
 import { usePathname, useRouter } from "next/navigation";
 
 // Higher-Order Component (HOC) to enforce authentication and authorization
-const withAuth = <P extends object>(WrappedComponent: ComponentType<P>) => {
+function withAuth<P extends object>(WrappedComponent: ComponentType<P>) {
   // Component that handles the authentication and authorization logic
   const WithAuthComponent = (props: P) => {
     const router = useRouter(); // Hook to manage routing
@@ -46,6 +46,6 @@ const withAuth = <P extends object>(WrappedComponent: ComponentType<P>) => {
   WithAuthComponent.displayName = `WithAuth(${WrappedComponent.displayName || WrappedComponent.name || "Component"})`;
 
   return WithAuthComponent;
-};
+}
 
 export default withAuth;

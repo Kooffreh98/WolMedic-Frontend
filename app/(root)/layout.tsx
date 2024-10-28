@@ -8,12 +8,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body>
-        <SidebarProvider>
-          <LoaderLayout>{children}</LoaderLayout>
-        </SidebarProvider>
-      </body>
-    </html>
+    <SidebarProvider>
+      <LoaderLayout>{children}</LoaderLayout>
+    </SidebarProvider>
   );
 }
