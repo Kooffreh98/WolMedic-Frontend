@@ -25,33 +25,19 @@ export default function Home() {
 
 
     return (
-    <div className="flex h-screen w-full bg-white">
-      {/* Hamburger Icon for Mobile */}
-      <button
-        className="lg:hidden p-4"
-        onClick={() => setShowSidebar(!showSidebar)}
-      >
-        <FontAwesomeIcon icon={showSidebar ? faTimes : faBars} className="text-xl" />
-      </button>
-
+    <div className="flex h-screen w-full bg-[#FBFDFC]">
       {/* Sidebar */}
-      <div
-        className={`fixed left-0 top-0 h-full w-[60%] max-w-xs bg-white pt-20 z-10 transition-transform ${
-          showSidebar ? "translate-x-0" : "-translate-x-full"
-        } lg:translate-x-0 lg:w-[15%]`}
-      >
         <Sidebar
           activeNav={activeNav}
           setActiveNav={setActiveNav}
           setAccountsSubNav={setAccountsSubNav}
         />
-      </div>
 
       {/* Main Content */}
-      <div className="flex flex-col ml-0 lg:ml-[15%] w-full lg:w-[85%] overflow-y-auto p-4 pt-12">
+      {/* <div className="flex flex-col ml-0 lg:ml-[15%] w-full lg:w-[80%] overflow-y-auto p-4 pt-12"> */}
         {/* Dashboard Content */}
         {activeNav === "dashboard" && (
-          <div className="flex pl-20">
+          <div className="flex">
             <Navbar2 />
             <DashboardContent />
           </div>
@@ -66,6 +52,6 @@ export default function Home() {
           </div>
         )}
       </div>
-    </div>
+    // </div>
   );
 }
