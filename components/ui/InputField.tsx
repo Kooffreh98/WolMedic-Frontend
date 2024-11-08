@@ -1,17 +1,18 @@
 import React from "react";
-import "./InputField.css"; // Styles for InputField component
 
 // Define prop types for InputField
 interface InputFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string;
   type?: string; // Optional, defaults to "text"
+  otherStyles: string;
+  itemRef: any;
 }
 
-const InputField = ({ label, type = "text", ...props }: InputFieldProps) => {
+const InputField = ({ label, otherStyles, itemRef, type = "text", ...props }: InputFieldProps) => {
   return (
-    <div className="input-field">
-      <label>{label}</label>
-      <input type={type} {...props} />
+    <div className={`input-field ${otherStyles}`}>
+      <label className="font-semibold">{label}</label>
+      <input ref={itemRef} type={type} {...props} />
     </div>
   );
 };
