@@ -69,18 +69,21 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="flex flex-col h-full w-[25%] shadow-md">
+    <div className="flex flex-col h-full w-[20%] shadow-md">
+      <div className="shadow h-15 bg-white border w-full p-4">
+        <Image
+        width={140}
+        height={85}
+        src="/Logo.svg" 
+        alt="logo"
+        priority
+          />
+      </div>
       <aside
-        className={`bg-white text-white w-64 transition-transform duration-300 h-full`}
+        className={`bg-white text-white w-full transition-transform duration-300 h-full`}
       >
-            <Image
-              width={140}
-              height={85}
-              src="/Logo.svg" 
-              alt="logo"
-              priority
-            />
         <ul className="mt-4 relative flex h-3/4 flex-col p-4 gap-4">
+          
           {sidebarItems.map(({ name, href, icon: Icon, position }) => (
             <li className={`w-full ${
               position? "absolute bottom-0":''

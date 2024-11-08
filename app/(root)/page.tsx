@@ -25,7 +25,7 @@ export default function Home() {
 
 
     return (
-    <div className="flex h-screen w-full bg-[#FBFDFC]">
+    <div className="flex h-screen w-full bg-[#FBFDFC] gap-6">
       {/* Sidebar */}
         <Sidebar
           activeNav={activeNav}
