@@ -37,7 +37,7 @@ export default function Home() {
       {/* <div className="flex flex-col ml-0 lg:ml-[15%] w-full lg:w-[80%] overflow-y-auto p-4 pt-12"> */}
         {/* Dashboard Content */}
         {activeNav === "dashboard" && (
-          <div className="flex">
+          <div className="flex flex-col gap-4">
             <Navbar2 />
             <DashboardContent />
           </div>
