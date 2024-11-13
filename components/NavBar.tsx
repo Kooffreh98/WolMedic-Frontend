@@ -11,8 +11,8 @@ const Navbar = () => {
           <Image
             src="/Images/photo.webp"
             alt="Profile"
-            width={40}
-            height={40}
+            width={104}
+            height={80}
             className="rounded-full"
           />
           <div className="hidden md:block">
