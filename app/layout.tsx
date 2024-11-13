@@ -3,6 +3,7 @@ import "./globals.css";
 import React from "react";
 import Link from "next/link";
 
+
 // Load Open Sans font
 const open_sans = Open_Sans({ subsets: ["latin"], weight: ["400", "700"] });
 

@@ -14,7 +14,7 @@ interface Props {
 export const MinorNav = (props: Props) => {
   return (
     <div className='flex flex-row justify-between h-10 my-4'>
-        <h3 className='text-black text-lg'>{props.heading}</h3>
+        <h3 className='text-black text-lg pl-5 md:pl-[15%]'>{props.heading}</h3>
         <div className='flex justify-between gap-4'>
             <Link href={props.link}>{props.src? <Button text={props.btn} src={props.src} alt={props.alt} /> : <Button text={props.btn} />}</Link>
             {props.btn2 && <Button text={props.btn2} color='red' />}

@@ -1,12 +1,23 @@
 import { FC } from 'react';
+import Layout from "app/(root)/layout"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faTrash } from '@fortawesome/free-solid-svg-icons';
+import Navbar from "components/Navbar";
 
 const AllUsers: FC = () => {
   return (
-    <div className="flex flex-col md:flex-row min-h-screen text-gray-800 text-sm">
+    <div className="flex flex-col bg-white w-full md:flex-row min-h-screen text-gray-800 text-sm">
+      
+      {/* Sidebar Placeholder - hidden on small screens */}
+      <Layout>
+      <div className="hidden w-full md:ml-64 lg:block w-1/4 bg-white p-4">
+        {/* Sidebar content here */}
+      </div>
+      <Navbar />
+      </Layout>
+
       {/* Main Content */}
-      <main className="flex-1 p-4 md:ml-64 bg-gray-50"> {/* Adds margin only on medium+ screens */}
+      <main className="flex-1 p-4 pt-20 bg-white"> {/* Adds margin only on medium+ screens */}
         {/* Header */}
         <header className="flex justify-between items-center">
           <div>

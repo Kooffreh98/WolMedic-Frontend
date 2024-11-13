@@ -1,17 +1,23 @@
 // pages/user-details.tsx
-
+import Layout from "app/(root)/layout";
+import Navbar from "components/Navbar";
 import { FC } from 'react';
 
 const UserDetailsPage: FC = () => {
   return (
-    <div className="flex flex-col lg:grid lg:grid-cols-[auto,1fr] min-h-screen text-gray-800 bg-gray-100">
+    <div className="flex flex-col bg-white w-full lg:grid lg:grid-cols-[auto,1fr] min-h-screen text-gray-800 bg-gray-100">
       
-      {/* Sidebar - Only visible on larger screens */}
-      <aside className="hidden lg:block p-4 bg-gray-50 shadow-md min-w-[200px]">
-      </aside>
+      
+        {/* Sidebar Placeholder - hidden on small screens */}
+      <Layout>
+      <div className="hidden w-full md:ml-64 lg:block w-1/4 bg-white p-4">
+        {/* Sidebar content here */}
+      </div>
+      <Navbar />
+      </Layout>
       
       {/* Main Content */}
-      <div className="flex flex-col flex-1">
+      <div className="flex pt-20 flex-col flex-1">
         {/* Header */}
         <header className="flex justify-between items-center p-4 bg-white shadow-md">
           <div>

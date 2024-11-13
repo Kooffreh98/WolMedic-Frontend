@@ -11,6 +11,11 @@
   box-sizing: border-box;
 }
 
+/* styles/globals.css */
+.sidebar {
+  @apply fixed top-0 left-0 h-screen w-64 bg-white;
+}
+
 html, body {
   font-family: 'Open Sans', sans-serif;
   background-color: #EDF2F7; /* Light Gray-Blue background */

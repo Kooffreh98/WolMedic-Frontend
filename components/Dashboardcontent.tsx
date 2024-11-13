@@ -1,10 +1,18 @@
 import React from "react";
+import Layout from "app/(root)/layout";
 import { FaSearch, FaClipboardCheck, FaUser, FaClock } from "react-icons/fa";
 
 const DashboardContent = () => {
   return (
     <div>
-      <main className="p-4 md:p-6 bg-white flex-1 pl-10 text-sm">
+      {/* Sidebar Placeholder - hidden on small screens */}
+      <Layout>
+      <div className="hidden w-full md:ml-64 lg:block w-1/4 bg-white p-4">
+        {/* Sidebar content here */}
+      </div>
+      </Layout>
+
+      <main className="p-4 bg-white pt-20 flex-1 pl-10 text-sm">
         <div className="font-[Open_Sans] text-xl hr md:text-2xl font-semibold leading-[31.2px] text-left">
           <h3 className="text-md">Dashboard</h3>
         </div>

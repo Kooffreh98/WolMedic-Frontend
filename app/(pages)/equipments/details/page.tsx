@@ -3,6 +3,7 @@ import { EquipmentImageList } from '@/components/equipment/image/imageCollection
 import { MinorNav } from '@/components/equipment/minorNav'
 import shears from '@/public/Images/shears.png'
 import React from 'react'
+import Layout from '@/app/(root)/layout'
 
 const EquipmentDetails = () => {
   let data = [
@@ -19,6 +20,7 @@ const EquipmentDetails = () => {
     keywords: ['Scissors', 'Surgery', 'Cutting', 'Shears']
   }
   return (
+    <Layout>
     <section>
         <MinorNav heading='Equipment List' link='' btn='Edit' btn2='Delete' />
         <div className='flex'>
@@ -27,6 +29,7 @@ const EquipmentDetails = () => {
         <EquipmentImageList list={data} />
         </div>
     </section>
+    </Layout>
   )
 }
 

@@ -1,17 +1,22 @@
 import { FC } from "react";
+import Layout from "app/(root)/layout";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faTrash, faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import Navbar from "components/Navbar";
 
 const Accounts: FC = () => {
   return (
-    <div className="flex flex-col lg:flex-row">
+    <div className="flex bg-white flex-col lg:flex-row">
       {/* Sidebar Placeholder - hidden on small screens */}
-      <div className="hidden lg:block w-1/4 bg-gray-100 p-4">
-        {/* Sidebar content here */}
-      </div>
+      <Layout>
+        <div className="hidden w-full md:ml-64 w-1/4 bg-white p-4">
+          {/* Sidebar content here */}
+        </div>
+        <Navbar />
+      </Layout>
 
       {/* Main Content */}
-      <div className="w-full lg:w-3/4 p-2 space-y-4">
+      <div className="w-full lg:ml-[22%] lg:w-3/4 p-2 pt-20 md:pt-20 lg:pt-20 space-y-4">
         <div className="bg-white p-3 rounded-md shadow-md">
           <h2 className="text-lg font-semibold text-black lg:text-xl lg:font-bold">Accounts</h2>
           <div className="flex justify-between items-center pt-3">
