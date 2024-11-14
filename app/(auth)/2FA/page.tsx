@@ -1,5 +1,5 @@
 "use client"
-import React, {useState, useRef} from 'react';
+import React, {useState, useRef, FormEvent} from 'react';
 import InputField from '../../../components/ui/InputField';
 import Button from '@/components/ui/Button';
 
@@ -36,7 +36,25 @@ const AuthCode = () => {
       inputRefs[index + 1].current?.focus();
     }
   };
-  
+
+  const handleSubmit = async () => {
+    // e.preventDefault();
+    try {
+      const response = await fetch('https://medequip-api.vercel.app/api/auth/resend-verification',{
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({email:"paulkooffreh@gmail.com"}),
+    });
+
+    const responseData = await response.json();
+    console.log(responseData);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   return (
     <>
       <div className='flex justify-center py-20'>    
@@ -137,6 +155,7 @@ const AuthCode = () => {
                 className='text-sm border-0 underline text-[#319898]' 
                 placeholder='Resend code'
                 value="Resend Code"
+                onClick={handleSubmit}
               />
             </div>
 
@@ -144,6 +163,7 @@ const AuthCode = () => {
               typeProperty="submit"
               label='Continue'
               otherStyles='w-full mb-2'
+              onClick={handleSubmit}
             />
           </form>
 

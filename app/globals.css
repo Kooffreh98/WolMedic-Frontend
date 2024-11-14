@@ -97,6 +97,10 @@ textarea:focus {
   border-color: #2C7A7B; /* Teal on focus */
 }
 
+input[type="checkbox"] {
+  width: 4% !important;
+}
+
 /* Sidebar */
 .sidebar {
   background-color: #e6f0f1; /* Light Gray-Blue sidebar */

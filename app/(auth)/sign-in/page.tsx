@@ -1,14 +1,40 @@
 "use client"
-import React, { useState } from 'react';
+import React, { FormEvent, useState } from 'react';
 import InputField from '../../../components/ui/InputField';
 import Button from '@/components/ui/Button';
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const SignIn = () => {
+    const router = useRouter();
     const [form, setForm] = useState({
         email: '',
         password: ''
     });
+
+    const handleSubmit = async (e: FormEvent) => {
+        e.preventDefault();
+        try {
+            const response = await fetch('https://medequip-api.vercel.app/api/auth/login',{
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(form),
+            });
+            if (response.ok) {
+                const responseData = await response.json();
+                console.log(responseData);
+                router.push("/");
+            }else {
+                const data = await response.json();
+                console.error(data.message);
+            }
+        } catch (error) {
+           console.error(error); 
+        }
+    };
+
     return (
         <>
             <div className='flex justify-center py-20'>    
@@ -50,6 +76,7 @@ const SignIn = () => {
                            typeProperty="submit"
                            label='Sign In'
                            otherStyles='w-full'
+                           onClick={handleSubmit}
                        />
                    </form>
 

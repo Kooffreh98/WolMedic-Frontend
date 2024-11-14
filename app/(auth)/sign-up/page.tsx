@@ -1,13 +1,18 @@
 "use client"
-import React, {useState} from 'react';
+import React, {FormEvent, useState} from 'react';
 import InputField from '../../../components/ui/InputField';
 import Button from '@/components/ui/Button';
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const SignUp = () => {
+  const router = useRouter();
   const [form, setForm] = useState({
-    username: '',
+    firstname: '',
+    lastname: '',
     email: '',
+    phone: '',
+    dob: '',
     password: '',
     confirmPassword: ''
   });
@@ -17,6 +22,47 @@ const SignUp = () => {
     setForm({...form, [name]: value }); 
     // console.log(form);  
   }
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    const data = {
+      firstname: form.firstname,
+      lastname: form.lastname,
+      email: form.email,
+      phone: form.phone,
+      dob: form.dob,
+      password: form.password
+    }
+    console.log(data);
+    
+    if (form.password === form.confirmPassword) {
+      try {
+        const response = await fetch('https://medequip-api.vercel.app/api/auth/signup',{
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        });
+        if (response.ok) {
+          //redirect to the email verification page after sucessfull submission
+          const responseData = await response.json();
+          console.log(responseData);
+          router.push("/2FA");
+        }else {
+          const errorData = await response.json();
+          console.error("Error: Failed to submit the form", errorData);
+          alert("Failed to create account");
+        }
+      } catch (error) {
+        console.error("An error occured:", error);
+      }
+    }else {
+      alert("Please make sure your passwords match");
+    }
+    
+  }
+
   return (
     <>
       <div className='flex justify-center py-20'>    
@@ -32,11 +78,21 @@ const SignUp = () => {
           <form className='text-[13px]'>
            <InputField 
              type='text'
-             label='Username'
-             name='username' 
+             label='First name'
+             name='firstname' 
              className='mb-3 text-xs' 
-             placeholder='Username' required
-             value={form.username}
+             placeholder='first name' required
+             value={form.firstname}
+             onChange={handleChange}
+           />
+
+            <InputField 
+             type='text'
+             label='Last name'
+             name='lastname' 
+             className='mb-3 text-xs' 
+             placeholder='last name' required  
+             value={form.lastname}
              onChange={handleChange}
            />
 
@@ -47,6 +103,27 @@ const SignUp = () => {
              className='mb-3 text-xs' 
              placeholder='example@email.com' required
              value={form.email}
+             onChange={handleChange}
+           />
+
+
+            <InputField 
+             type='text'
+             label='Phone Number'
+             name='phone' 
+             className='mb-3 text-xs' 
+             placeholder='phone no.' required  
+             value={form.phone}
+             onChange={handleChange}
+           />
+
+            <InputField 
+             type='date'
+             label='Date of Birth'
+             name='dob' 
+             className='mb-3 text-xs' 
+             placeholder='**/**/****' required  
+             value={form.dob}
              onChange={handleChange}
            />
 
@@ -81,6 +158,7 @@ const SignUp = () => {
               typeProperty="submit"
               label='Create Account'
               otherStyles='w-full'
+              onClick={handleSubmit}
             />
           </form>
 
@@ -95,4 +173,5 @@ const SignUp = () => {
     </>
   )
 }
+
 export default SignUp;
