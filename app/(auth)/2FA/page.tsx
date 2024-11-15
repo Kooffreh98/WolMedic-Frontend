@@ -1,11 +1,11 @@
 "use client"
-import React, {useState, useRef, FormEvent} from 'react';
+import React, {useState, useRef, useEffect, FormEvent} from 'react';
 import InputField from '../../../components/ui/InputField';
 import Button from '@/components/ui/Button';
 
 
 const AuthCode = () => {
-
+ 
   const [code, setCode] = useState({
     code1: '',
     code2: '',
@@ -37,8 +37,8 @@ const AuthCode = () => {
     }
   };
 
-  const handleSubmit = async () => {
-    // e.preventDefault();
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
     try {
       const response = await fetch('https://medequip-api.vercel.app/api/auth/resend-verification',{
         method: 'POST',
@@ -54,7 +54,7 @@ const AuthCode = () => {
       console.error(error);
     }
   }
-
+  
   return (
     <>
       <div className='flex justify-center py-20'>    
