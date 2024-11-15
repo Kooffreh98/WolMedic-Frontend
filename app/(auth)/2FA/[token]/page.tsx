@@ -1,15 +1,16 @@
+"use client";
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
-export default function VerifyAccount() {
+export default function VerifyAccount({params}:{params: {token: string}}) {
   const router = useRouter();
-  const { token } = router.query; // Extract the token from the URL
+  const { token } = params; // Extract the token from the URL
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    if (!router.isReady || !token) return; // Wait until the router and token are ready
+    if (!token) return; // Wait until the router and token are ready
 
     const verifyToken = async () => {
       try {
@@ -18,6 +19,7 @@ export default function VerifyAccount() {
 
         const result = await response.json();
         setData(result);
+        router.push("/verified");
       } catch (err) {
         setError(err.message);
       } finally {
@@ -26,7 +28,7 @@ export default function VerifyAccount() {
     };
 
     verifyToken();
-  }, [router.isReady, token]); // Trigger when router is ready and token is available
+  }, [token]); // Trigger when router is ready and token is available
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
