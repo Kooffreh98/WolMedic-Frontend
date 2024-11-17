@@ -4,9 +4,15 @@ import { useState, useEffect } from 'react';
 import Layout from "../(root)/layout";
 import Navbar from "components/Navbar";
 // import Sidebar from "@/components/Sidebar";
+<<<<<<< HEAD
 import Accounts from "../(pages)/Accounts";
 import AllUsers from "../(pages)/AllUsers";
 import UserProfile from "../(pages)/UserProfile";
+=======
+import Accounts from "@/pages/Accounts";
+import AllUsers from "@/pages/AllUsers";
+import UserProfile from "@/pages/UserProfile";
+>>>>>>> 61be063564fcc57052880585e10647b22b2ac8e7
 import DashboardContent from "@/components/Dashboardcontent"; // Importing DashboardContent
 
 // Define SubItem type

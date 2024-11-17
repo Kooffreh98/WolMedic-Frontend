@@ -5,6 +5,7 @@ import Link from "next/link";
 import { VerificationProvider } from "../context/VerificationContext";
 
 
+
 // Load Open Sans font
 const open_sans = Open_Sans({ subsets: ["latin"], weight: ["400", "700"] });
 
