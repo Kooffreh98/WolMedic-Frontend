@@ -8,7 +8,7 @@ const Verified = () => {
 
   const router = useRouter();
   const handleClick = () => {
-    router.push("/");
+    router.push("/sign-in");
   };
   return (
     <>

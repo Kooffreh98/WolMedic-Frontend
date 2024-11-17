@@ -48,7 +48,7 @@ const SignUp = () => {
           //redirect to the email verification page after sucessfull submission
           const responseData = await response.json();
           console.log(responseData);
-          router.push("/2FA");
+          router.push(`/2FA?email=${encodeURIComponent(data.email)}`);
         }else {
           const errorData = await response.json();
           console.error("Error: Failed to submit the form", errorData);
