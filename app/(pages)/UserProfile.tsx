@@ -1,6 +1,7 @@
 // pages/user-details.tsx
 
 import { FC } from 'react';
+import withAuth from '@/hoc/WithAuth';
 
 const UserDetailsPage: FC = () => {
   return (
@@ -105,4 +106,4 @@ const UserDetailsPage: FC = () => {
   );
 };
 
-export default UserDetailsPage;
+export default withAuth(UserDetailsPage);

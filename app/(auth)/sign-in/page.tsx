@@ -23,9 +23,10 @@ const SignIn = () => {
                 body: JSON.stringify(form),
             });
             if (response.ok) {
-                const responseData = await response.json();
-                console.log(responseData);
-                router.push("/");
+                const {user, accessToken} = await response.json(); //get the access token and user name from the response
+                localStorage.setItem('accessToken', accessToken); //store the access token
+                localStorage.setItem('user', JSON.stringify(user)); // store the user
+                router.push("/"); // redirect to the dashboard
             }else {
                 const data = await response.json();
                 console.error(data.message);

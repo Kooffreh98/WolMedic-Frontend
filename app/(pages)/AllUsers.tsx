@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faTrash } from '@fortawesome/free-solid-svg-icons';
+import withAuth from '@/hoc/WithAuth';
 
 const AllUsers: FC = () => {
   return (
@@ -70,4 +71,4 @@ const AllUsers: FC = () => {
   );
 };
 
-export default AllUsers;
+export default withAuth(AllUsers);

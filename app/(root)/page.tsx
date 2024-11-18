@@ -4,23 +4,18 @@ import { useState, useEffect } from 'react';
 import Layout from "../(root)/layout";
 import Navbar from "components/Navbar";
 // import Sidebar from "@/components/Sidebar";
-<<<<<<< HEAD
-import Accounts from "../(pages)/Accounts";
-import AllUsers from "../(pages)/AllUsers";
-import UserProfile from "../(pages)/UserProfile";
-=======
 import Accounts from "@/pages/Accounts";
 import AllUsers from "@/pages/AllUsers";
 import UserProfile from "@/pages/UserProfile";
->>>>>>> 61be063564fcc57052880585e10647b22b2ac8e7
 import DashboardContent from "@/components/Dashboardcontent"; // Importing DashboardContent
+import withAuth from '@/hoc/WithAuth';
 
 // Define SubItem type
 type SubItem = {
   name: string;
 };
 
-export default function Home() {
+function Home() {
   const [activeNav, setActiveNav] = useState<string>('dashboard');
   const [accountsSubNav, setAccountsSubNav] = useState<SubItem[]>([]);
   const [showSidebar, setShowSidebar] = useState(false);
@@ -60,3 +55,5 @@ export default function Home() {
     </div>
   );
 }
+
+export default withAuth(Home);
