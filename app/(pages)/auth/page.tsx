@@ -8,7 +8,6 @@ import {
   faTrash,
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
-import Navbar from "@/components/Navbar";
 
 const Accounts: FC = () => {
   return (
@@ -18,7 +17,6 @@ const Accounts: FC = () => {
         <div className="hidden w-full md:ml-64 w-1/4 bg-white p-4">
           {/* Sidebar content here */}
         </div>
-        <Navbar />
       </Layout>
 
       {/* Main Content */}

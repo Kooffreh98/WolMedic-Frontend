@@ -4,7 +4,6 @@ import { FC } from "react";
 import Layout from "app/(root)/layout";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faTrash } from "@fortawesome/free-solid-svg-icons";
-import Navbar from "@/components/Navbar";
 
 const AllUsers: FC = () => {
   return (
@@ -14,7 +13,6 @@ const AllUsers: FC = () => {
         <div className="hidden w-full md:ml-64 lg:block w-1/4 bg-white p-4">
           {/* Sidebar content here */}
         </div>
-        <Navbar />
       </Layout>
 
       {/* Main Content */}

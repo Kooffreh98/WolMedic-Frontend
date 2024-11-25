@@ -1,7 +1,6 @@
 "use client";
 
 import Layout from "app/(root)/layout";
-import Navbar from "@/components/Navbar";
 import { FC } from "react";
 
 const UserDetailsPage: FC = () => {
@@ -12,7 +11,6 @@ const UserDetailsPage: FC = () => {
         <div className="hidden w-full md:ml-64 lg:block w-1/4 bg-white p-4">
           {/* Sidebar content here */}
         </div>
-        <Navbar />
       </Layout>
 
       {/* Main Content */}

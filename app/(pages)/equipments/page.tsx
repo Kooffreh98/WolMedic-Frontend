@@ -3,10 +3,8 @@ import { useEffect, useState } from 'react';
 import EquipmentList from '@/components/equipment/cardList';
 import { MinorNav } from '@/components/equipment/minorNav';
 import add from '@/public/icons/add.svg';
-import { equips } from '@/components/equipment/data';
 import React from 'react';
 import Layout from "app/(root)/layout";
-import Navbar from "components/Navbar";
 
 const EquipmentsPage = () => {
   const [equipmentList, setEquipmentList] = useState([]);
@@ -32,7 +30,6 @@ const EquipmentsPage = () => {
      <div className="hidden w-full md:ml-64 w-1/4 bg-white p-4">
        {/* Sidebar content here */}
      </div>
-     <Navbar />
    </Layout>
 
     

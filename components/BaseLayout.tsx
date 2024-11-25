@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, ReactNode } from "react"; // Import necessary hooks and types
-import Header from "./Navbar";
 import Sidebar from "./Sidebar";
 import NavBarSm from "./NavbarSm"; // Assuming you have this component
 
@@ -35,7 +34,6 @@ const BaseLayout = ({ children }: BaseLayoutProps) => {
           {/* Desktop layout: Sidebar + Main Content */}
           <Sidebar />
           <main className="flex-grow relative p-4">
-            <Header />
             <div className="overflow-auto h-full">{children}</div>
           </main>
         </div>

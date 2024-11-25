@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import Layout from "../(root)/layout";
-import Navbar from "@/components/Navbar";
 // import Sidebar from "@/components/Sidebar";
 import Accounts from "@/pages/Accounts";
 import AllUsers from "@/pages/AllUsers";
@@ -35,7 +34,6 @@ function Home() {
         setActiveNav={setActiveNav}
         setAccountsSubNav={setAccountsSubNav}
       /> */}
-      <Navbar />
       {/* Main Content */}
       {/* Dashboard Content */}
       {activeNav === "dashboard" && (
