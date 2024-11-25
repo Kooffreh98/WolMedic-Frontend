@@ -1,89 +1,113 @@
-import React from "react";
-import Layout from "app/(root)/layout";
-import { FaSearch, FaClipboardCheck, FaUser, FaClock } from "react-icons/fa";
+import { useState } from "react";
+import { FaClock, FaChevronDown } from "react-icons/fa";
+import Card from "./Card";
+import BaseLayout from "./BaseLayout"; // or "@/components/BaseLayout"
 
 const DashboardContent = () => {
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const toggleDropdown = () => setDropdownOpen((prev) => !prev);
+
   return (
-    <div>
-      {/* Sidebar Placeholder - hidden on small screens */}
-      <Layout>
-      <div className="hidden w-full md:ml-64 lg:block w-1/4 bg-white p-4">
-        {/* Sidebar content here */}
-      </div>
-      </Layout>
+    <BaseLayout>
+      <div className="min-h-screen bg-white flex flex-col pt-20">
+        {" "}
+        {/* Ensures space below navbar and full height */}
+        <div className="flex-1 bg-white shadow-xl rounded-xl p-8">
+          {" "}
+          {/* flex-1 ensures this takes up the remaining space */}
+          <header className="mb-8">
+            <h3 className="text-2xl font-semibold text-gray-800">Dashboard</h3>
+          </header>
+          <section className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <Card
+              title="Total Users"
+              value="4,099"
+              trend="↑ 8.5%"
+              trendType="up"
+              iconSrc="/icons/Icon.svg"
+              iconWidth={150}
+              iconHeight={150}
+            />
+            <Card
+              title="Total Searches"
+              value="89,000"
+              trend="↓ 4.3%"
+              trendType="down"
+              iconSrc="/icons/reshape.svg"
+              iconWidth={150}
+              iconHeight={150}
+            />
+            <Card
+              title="Total Matches"
+              value="2,040"
+              trend="↑ 1.8%"
+              trendType="up"
+              iconSrc="/icons/combineshape.svg"
+              iconWidth={150}
+              iconHeight={150}
+            />
+          </section>
+          <section className="mt-10 bg-white shadow-md rounded-lg">
+            <div className="flex justify-between items-center p-6 border-b border-gray-200">
+              <h3 className="text-lg font-semibold">Recent Searches</h3>
+              <div className="relative flex items-center space-x-4">
+                <button
+                  className="bg-white text-gray-800 px-4 py-2 rounded-lg flex items-center shadow-sm"
+                  onClick={toggleDropdown}
+                >
+                  <FaClock className="mr-2" />
+                  Today <FaChevronDown className="ml-2" />
+                </button>
+                <button className="bg-white border-[#E5F1F1] text-green-500 px-4 py-2 rounded-lg shadow-sm">
+                  View All
+                </button>
 
-      <main className="p-4 bg-white pt-20 flex-1 pl-10 text-sm">
-        <div className="font-[Open_Sans] text-xl hr md:text-2xl font-semibold leading-[31.2px] text-left">
-          <h3 className="text-md">Dashboard</h3>
-        </div>
-        {/* Cards Section */}
-        <section className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 mb-8 pt-5">
-          <div className="p-4 bg-white shadow rounded-lg flex items-center justify-between">
-            <div>
-              <h3 className="text-gray-700 font-semibold">Total Users</h3>
-              <p className="text-2xl md:text-3xl font-bold">4,099</p>
-              <p className="text-green-500 text-sm md:text-base">↑ 8.5% <span className="text-black">Up from yesterday</span></p>
+                {dropdownOpen && (
+                  <ul className="absolute right-0 mt-2 bg-white border border-gray-200 rounded-md shadow-lg z-10">
+                    {[
+                      "Yesterday's Searches",
+                      "Last Week's Searches",
+                      "Two Weeks Ago",
+                      "Last Month",
+                      "Two Months Ago",
+                    ].map((item, index) => (
+                      <li
+                        key={index}
+                        className="px-4 py-2 text-gray-800 hover:bg-gray-100 cursor-pointer"
+                      >
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
             </div>
-            <FaUser className="text-blue-600 text-2xl md:text-3xl" />
-          </div>
-          <div className="p-4 bg-white shadow rounded-lg flex items-center justify-between">
-            <div>
-              <h3 className="text-gray-700 font-semibold">Total Searches</h3>
-              <p className="text-2xl md:text-3xl font-bold">89,000</p>
-              <p className="text-red-500 text-sm md:text-base">↓ 4.3% <span className="text-black"> Down from yesterday</span></p>
-            </div>
-            <FaSearch className="text-green-400 text-2xl md:text-3xl" />
-          </div>
-          <div className="p-4 bg-white shadow rounded-lg flex items-center justify-between">
-            <div>
-              <h3 className="text-gray-700 font-semibold">Total Matches</h3>
-              <p className="text-2xl md:text-3xl font-bold">2040</p>
-              <p className="text-green-500 text-sm md:text-base">↑ 1.8% <span className="text-black">Up from yesterday</span></p>
-            </div>
-            <FaClipboardCheck className="text-red-400 text-2xl md:text-3xl" />
-          </div>
-        </section>
 
-        {/* Recent Searches Section */}
-        <section className="bg-white p-4 md:p-6 shadow rounded-lg mb-4">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-4 sm:space-y-0">
-            <h3 className="text-lg md:text-xl font-semibold text-gray-700">Recent Searches</h3>
-            <div className="flex flex-wrap items-center space-x-2 sm:space-x-4">
-              <button className="bg-blue-500 text-white px-4 py-2 rounded-lg flex items-center w-full sm:w-auto justify-center">
-                <FaClock className="mr-2" /> Today
-              </button>
-              <button className="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg w-full sm:w-auto">
-                View All
-              </button>
-            </div>
-          </div>
-        </section>
-
-        {/* Table Section */}
-        <section className="bg-white p-4 md:p-6 shadow rounded-lg">
-          <div className="overflow-x-auto">
-            <table className="w-full text-left">
-              <thead>
-                <tr>
-                  <th className="p-2 md:p-4 border-b-2 text-sm md:text-base">User</th>
-                  <th className="p-2 md:p-4 border-b-2 text-sm md:text-base">Search Word</th>
-                  <th className="p-2 md:p-4 border-b-2 text-sm md:text-base">Date - Time</th>
-                </tr>
-              </thead>
-              <tbody>
-                {[...Array(5)].map((_, index) => (
-                  <tr key={index} className="text-gray-700">
-                    <td className="p-2 md:p-4 border-b text-sm md:text-base">Daniel Benson</td>
-                    <td className="p-2 md:p-4 border-b text-sm md:text-base">2 Pack Trauma Shears</td>
-                    <td className="p-2 md:p-4 border-b text-sm md:text-base">12/06/2024 - 9:36AM</td>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="bg-gray-100">
+                    <th className="p-4 text-left">User</th>
+                    <th className="p-4 text-left">Recent Searches</th>
+                    <th className="p-4 text-left">Date - Time</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </section>
-      </main>
-    </div>
+                </thead>
+                <tbody>
+                  {Array.from({ length: 5 }, (_, i) => (
+                    <tr key={i} className="border-t border-gray-200">
+                      <td className="p-4">Daniel Benson</td>
+                      <td className="p-4">2 Pack Trauma Shears</td>
+                      <td className="p-4">12/06/2024 - 9:36 AM</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      </div>
+    </BaseLayout>
   );
 };
 

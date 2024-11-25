@@ -1,14 +1,14 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import Layout from "../(root)/layout";
-import Navbar from "components/Navbar";
+import Navbar from "@/components/Navbar";
 // import Sidebar from "@/components/Sidebar";
 import Accounts from "@/pages/Accounts";
 import AllUsers from "@/pages/AllUsers";
 import UserProfile from "@/pages/UserProfile";
 import DashboardContent from "@/components/Dashboardcontent"; // Importing DashboardContent
-import withAuth from '@/hoc/WithAuth';
+import withAuth from "@/hoc/WithAuth";
 
 // Define SubItem type
 type SubItem = {
@@ -16,13 +16,13 @@ type SubItem = {
 };
 
 function Home() {
-  const [activeNav, setActiveNav] = useState<string>('dashboard');
+  const [activeNav, setActiveNav] = useState<string>("dashboard");
   const [accountsSubNav, setAccountsSubNav] = useState<SubItem[]>([]);
   const [showSidebar, setShowSidebar] = useState(false);
 
   useEffect(() => {
     // Reset sub-navigation when switching to the 'dashboard' tab
-    if (activeNav !== 'accounts') {
+    if (activeNav !== "accounts") {
       setAccountsSubNav([]);
     }
   }, [activeNav]);
@@ -47,9 +47,15 @@ function Home() {
       {/* Render specific Accounts sub-navigation components based on activeNav */}
       {activeNav === "accounts" && (
         <Layout>
-          {accountsSubNav.some((subItem) => subItem.name === "Accounts") && <Accounts />}
-          {accountsSubNav.some((subItem) => subItem.name === "All Users") && <AllUsers />}
-          {accountsSubNav.some((subItem) => subItem.name === "User Profile") && <UserProfile />}
+          {accountsSubNav.some((subItem) => subItem.name === "Accounts") && (
+            <Accounts />
+          )}
+          {accountsSubNav.some((subItem) => subItem.name === "All Users") && (
+            <AllUsers />
+          )}
+          {accountsSubNav.some(
+            (subItem) => subItem.name === "User Profile",
+          ) && <UserProfile />}
         </Layout>
       )}
     </div>

@@ -1,23 +1,26 @@
-import { FC } from 'react';
-import Layout from "app/(root)/layout"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faTrash } from '@fortawesome/free-solid-svg-icons';
-import Navbar from "components/Navbar";
+"use client";
+
+import { FC } from "react";
+import Layout from "app/(root)/layout";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faTrash } from "@fortawesome/free-solid-svg-icons";
+import Navbar from "@/components/Navbar";
 
 const AllUsers: FC = () => {
   return (
     <div className="flex flex-col bg-white w-full md:flex-row min-h-screen text-gray-800 text-sm">
-      
       {/* Sidebar Placeholder - hidden on small screens */}
       <Layout>
-      <div className="hidden w-full md:ml-64 lg:block w-1/4 bg-white p-4">
-        {/* Sidebar content here */}
-      </div>
-      <Navbar />
+        <div className="hidden w-full md:ml-64 lg:block w-1/4 bg-white p-4">
+          {/* Sidebar content here */}
+        </div>
+        <Navbar />
       </Layout>
 
       {/* Main Content */}
-      <main className="flex-1 p-4 pt-20 bg-white"> {/* Adds margin only on medium+ screens */}
+      <main className="flex-1 p-4 pt-20 bg-white">
+        {" "}
+        {/* Adds margin only on medium+ screens */}
         {/* Header */}
         <header className="flex justify-between items-center">
           <div>
@@ -31,10 +34,11 @@ const AllUsers: FC = () => {
             </button>
           </div>
         </header>
-
         {/* Users Table */}
         <section className="mt-4 bg-white rounded-lg shadow-md p-4">
-          <h3 className="text-base md:text-lg font-semibold text-gray-700 mb-4">All Users</h3>
+          <h3 className="text-base md:text-lg font-semibold text-gray-700 mb-4">
+            All Users
+          </h3>
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
@@ -48,21 +52,67 @@ const AllUsers: FC = () => {
               <tbody>
                 {/* Table rows */}
                 {[
-                  { name: 'Angela Bassett', occupation: 'Oncologist', location: 'Los Angeles, CA' },
-                  { name: 'Rahmin Dunis', occupation: 'Oncologist', location: 'Mumbai, India' },
-                  { name: 'Joe Chin', occupation: 'Gynaecologist', location: 'Cuba' },
-                  { name: 'Halimar Abubakar', occupation: 'Optician', location: 'Kiev' },
-                  { name: 'Gustavo Fring', occupation: 'Dentist', location: 'Tokyo' },
-                  { name: 'Angela Bassett', occupation: 'Oncologist', location: 'Los Angeles, CA' },
-                  { name: 'Rahmin Dunis', occupation: 'Oncologist', location: 'Mumbai, India' },
-                  { name: 'Joe Chin', occupation: 'Gynaecologist', location: 'Cuba' },
-                  { name: 'Halimar Abubakar', occupation: 'Optician', location: 'Kiev' },
-                  { name: 'Gustavo Fring', occupation: 'Dentist', location: 'Tokyo' },
+                  {
+                    name: "Angela Bassett",
+                    occupation: "Oncologist",
+                    location: "Los Angeles, CA",
+                  },
+                  {
+                    name: "Rahmin Dunis",
+                    occupation: "Oncologist",
+                    location: "Mumbai, India",
+                  },
+                  {
+                    name: "Joe Chin",
+                    occupation: "Gynaecologist",
+                    location: "Cuba",
+                  },
+                  {
+                    name: "Halimar Abubakar",
+                    occupation: "Optician",
+                    location: "Kiev",
+                  },
+                  {
+                    name: "Gustavo Fring",
+                    occupation: "Dentist",
+                    location: "Tokyo",
+                  },
+                  {
+                    name: "Angela Bassett",
+                    occupation: "Oncologist",
+                    location: "Los Angeles, CA",
+                  },
+                  {
+                    name: "Rahmin Dunis",
+                    occupation: "Oncologist",
+                    location: "Mumbai, India",
+                  },
+                  {
+                    name: "Joe Chin",
+                    occupation: "Gynaecologist",
+                    location: "Cuba",
+                  },
+                  {
+                    name: "Halimar Abubakar",
+                    occupation: "Optician",
+                    location: "Kiev",
+                  },
+                  {
+                    name: "Gustavo Fring",
+                    occupation: "Dentist",
+                    location: "Tokyo",
+                  },
                 ].map((user, index) => (
                   <tr key={index} className="border-t">
-                    <td className="p-2 md:p-4 text-xs md:text-sm">{user.name}</td>
-                    <td className="p-2 md:p-4 text-xs md:text-sm">{user.occupation}</td>
-                    <td className="p-2 md:p-4 text-xs md:text-sm">{user.location}</td>
+                    <td className="p-2 md:p-4 text-xs md:text-sm">
+                      {user.name}
+                    </td>
+                    <td className="p-2 md:p-4 text-xs md:text-sm">
+                      {user.occupation}
+                    </td>
+                    <td className="p-2 md:p-4 text-xs md:text-sm">
+                      {user.location}
+                    </td>
                     <td className="p-2 md:p-4 flex space-x-2 text-xs md:text-sm">
                       <button className="flex items-center text-green-500 p-1 sm:p-2">
                         <FontAwesomeIcon icon={faEye} className="h-4 w-4" />

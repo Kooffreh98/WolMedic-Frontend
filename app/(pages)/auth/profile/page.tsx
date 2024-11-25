@@ -1,28 +1,28 @@
-// pages/user-details.tsx
+"use client";
+
 import Layout from "app/(root)/layout";
-import Navbar from "components/Navbar";
-import { FC } from 'react';
+import Navbar from "@/components/Navbar";
+import { FC } from "react";
 
 const UserDetailsPage: FC = () => {
   return (
     <div className="flex flex-col bg-white w-full lg:grid lg:grid-cols-[auto,1fr] min-h-screen text-gray-800 bg-gray-100">
-      
-      
-        {/* Sidebar Placeholder - hidden on small screens */}
+      {/* Sidebar Placeholder - hidden on small screens */}
       <Layout>
-      <div className="hidden w-full md:ml-64 lg:block w-1/4 bg-white p-4">
-        {/* Sidebar content here */}
-      </div>
-      <Navbar />
+        <div className="hidden w-full md:ml-64 lg:block w-1/4 bg-white p-4">
+          {/* Sidebar content here */}
+        </div>
+        <Navbar />
       </Layout>
-      
+
       {/* Main Content */}
       <div className="flex pt-20 flex-col flex-1">
         {/* Header */}
         <header className="flex justify-between items-center p-4 bg-white shadow-md">
           <div>
             <h2 className="text-lg font-semibold text-gray-700">
-              Accounts &gt; All Users &gt; <span className="text-green-500">User Profile</span>
+              Accounts &gt; All Users &gt;{" "}
+              <span className="text-green-500">User Profile</span>
             </h2>
           </div>
           <button className="bg-gray-200 px-4 py-2 rounded-md text-gray-600 hover:bg-gray-300">
@@ -33,7 +33,9 @@ const UserDetailsPage: FC = () => {
         {/* User Details Section */}
         <main className="flex-1 p-4 text-sm">
           <section className="bg-white rounded-lg shadow-md p-4 lg:p-6 mb-4">
-            <h3 className="text-lg font-semibold text-gray-700 mb-4">User Details</h3>
+            <h3 className="text-lg font-semibold text-gray-700 mb-4">
+              User Details
+            </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label className="block text-gray-600 mb-1">First Name</label>
@@ -54,7 +56,9 @@ const UserDetailsPage: FC = () => {
                 />
               </div>
               <div>
-                <label className="block text-gray-600 mb-1">Email Address</label>
+                <label className="block text-gray-600 mb-1">
+                  Email Address
+                </label>
                 <input
                   type="email"
                   value="johnchao@gmail.com"
@@ -94,7 +98,9 @@ const UserDetailsPage: FC = () => {
 
           {/* Statistics Section */}
           <section className="bg-white rounded-lg shadow-md p-4 lg:p-6 mb-4">
-            <h3 className="text-lg font-semibold text-gray-700 mb-4">Statistics</h3>
+            <h3 className="text-lg font-semibold text-gray-700 mb-4">
+              Statistics
+            </h3>
             <div className="grid grid-cols-2 gap-4 text-center">
               <div>
                 <p className="text-3xl font-bold text-gray-700">450</p>

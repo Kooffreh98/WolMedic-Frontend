@@ -2,9 +2,8 @@ import { Open_Sans } from "next/font/google";
 import "./globals.css";
 import React from "react";
 import Link from "next/link";
-import { VerificationProvider } from "../context/VerificationContext";
-
-
+import { VerificationProvider } from "@/context/VerificationContext";
+import Head from "next/head";
 
 // Load Open Sans font
 const open_sans = Open_Sans({ subsets: ["latin"], weight: ["400", "700"] });
@@ -22,7 +21,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      {/* <Link rel="icon" type="image/svg+xml" href="/public/Logo.png" /> */}
+      <Head>
+        <link rel="icon" type="image/svg+xml" href="/public/Logo.png" />
+      </Head>
       <body className={`${open_sans.className}`}>
         <VerificationProvider>{children}</VerificationProvider>
       </body>

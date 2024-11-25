@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, ReactNode } from "react"; // Import necessary hooks and types
-import Header from "./NavBar";
+import Header from "./Navbar";
 import Sidebar from "./Sidebar";
 import NavBarSm from "./NavbarSm"; // Assuming you have this component
 
@@ -10,7 +10,7 @@ interface BaseLayoutProps {
 }
 
 const BaseLayout = ({ children }: BaseLayoutProps) => {
-  const [isMediumUp, setIsMediumUp] = useState(false);
+  const [isMediumUp, setIsMediumUp] = useState<boolean>(false);
 
   useEffect(() => {
     // Function to check the window width
@@ -18,20 +18,21 @@ const BaseLayout = ({ children }: BaseLayoutProps) => {
       setIsMediumUp(window.innerWidth >= 768); // 768px is considered the medium breakpoint
     };
 
-    // Set initial value
+    // Set initial value on mount
     handleResize();
 
     // Add resize event listener
     window.addEventListener("resize", handleResize);
 
-    // Clean up the event listener on component unmount
+    // Cleanup the event listener on component unmount
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  }, []); // Empty dependency array ensures this only runs once when component mounts
 
   return (
     <div className="min-h-screen flex flex-col">
       {isMediumUp ? (
         <div className="flex flex-grow">
+          {/* Desktop layout: Sidebar + Main Content */}
           <Sidebar />
           <main className="flex-grow relative p-4">
             <Header />
@@ -40,7 +41,7 @@ const BaseLayout = ({ children }: BaseLayoutProps) => {
         </div>
       ) : (
         <div className="flex flex-col">
-          {/* Display NavBarSm for mobile view */}
+          {/* Mobile layout: NavBarSm + Main Content */}
           <NavBarSm />
           <div className="p-4">{children}</div>
         </div>

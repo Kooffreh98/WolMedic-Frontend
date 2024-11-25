@@ -1,8 +1,14 @@
+"use client";
+
 import { FC } from "react";
 import Layout from "app/(root)/layout";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faTrash, faChevronRight } from "@fortawesome/free-solid-svg-icons";
-import Navbar from "components/Navbar";
+import {
+  faEye,
+  faTrash,
+  faChevronRight,
+} from "@fortawesome/free-solid-svg-icons";
+import Navbar from "@/components/Navbar";
 
 const Accounts: FC = () => {
   return (
@@ -18,7 +24,9 @@ const Accounts: FC = () => {
       {/* Main Content */}
       <div className="w-full lg:ml-[22%] lg:w-3/4 p-2 pt-20 md:pt-20 lg:pt-20 space-y-4">
         <div className="bg-white p-3 rounded-md shadow-md">
-          <h2 className="text-lg font-semibold text-black lg:text-xl lg:font-bold">Accounts</h2>
+          <h2 className="text-lg font-semibold text-black lg:text-xl lg:font-bold">
+            Accounts
+          </h2>
           <div className="flex justify-between items-center pt-3">
             <h3 className="text-sm font-semibold text-gray-700">All Users</h3>
             <button className="text-black bg-green-400 px-3 py-1 rounded-md flex items-center space-x-1 border border-gray-300 hover:border-gray-400">
@@ -39,11 +47,31 @@ const Accounts: FC = () => {
               </thead>
               <tbody>
                 {[
-                  { name: "Angela Bassett", occupation: "Oncologist", location: "Los Angeles, CA" },
-                  { name: "Rahmin Dunis", occupation: "Oncologist", location: "Mumbai, India" },
-                  { name: "Joe Chin", occupation: "Gynacologist", location: "Cuba" },
-                  { name: "Halimar Abubakar", occupation: "Optician", location: "Kiev" },
-                  { name: "Gustavo Fring", occupation: "Dentist", location: "Tokyo" }
+                  {
+                    name: "Angela Bassett",
+                    occupation: "Oncologist",
+                    location: "Los Angeles, CA",
+                  },
+                  {
+                    name: "Rahmin Dunis",
+                    occupation: "Oncologist",
+                    location: "Mumbai, India",
+                  },
+                  {
+                    name: "Joe Chin",
+                    occupation: "Gynacologist",
+                    location: "Cuba",
+                  },
+                  {
+                    name: "Halimar Abubakar",
+                    occupation: "Optician",
+                    location: "Kiev",
+                  },
+                  {
+                    name: "Gustavo Fring",
+                    occupation: "Dentist",
+                    location: "Tokyo",
+                  },
                 ].map((user, index) => (
                   <tr key={index} className="border-t">
                     <td className="p-2 text-sm">{user.name}</td>
@@ -83,13 +111,19 @@ const Accounts: FC = () => {
                 </tr>
               </thead>
               <tbody>
-                {Array(5).fill({ username: "Jonathan Barks", searches: "500+", saved: 45 }).map((user, index) => (
-                  <tr key={index} className="border-t">
-                    <td className="p-2 text-sm">{user.username}</td>
-                    <td className="p-2 text-sm">{user.searches}</td>
-                    <td className="p-2 text-sm">{user.saved}</td>
-                  </tr>
-                ))}
+                {Array(5)
+                  .fill({
+                    username: "Jonathan Barks",
+                    searches: "500+",
+                    saved: 45,
+                  })
+                  .map((user, index) => (
+                    <tr key={index} className="border-t">
+                      <td className="p-2 text-sm">{user.username}</td>
+                      <td className="p-2 text-sm">{user.searches}</td>
+                      <td className="p-2 text-sm">{user.saved}</td>
+                    </tr>
+                  ))}
               </tbody>
             </table>
           </div>
