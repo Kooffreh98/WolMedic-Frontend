@@ -1,3 +1,5 @@
+"use client";
+import { useEffect, useState } from 'react';
 import EquipmentList from '@/components/equipment/cardList';
 import { MinorNav } from '@/components/equipment/minorNav';
 import add from '@/public/icons/add.svg';
@@ -7,6 +9,22 @@ import Layout from "app/(root)/layout";
 import Navbar from "components/Navbar";
 
 const EquipmentsPage = () => {
+  const [equipmentList, setEquipmentList] = useState([]);
+  useEffect(() =>{
+    const equipList = async () => {
+      try {
+        const response = await fetch(`https://medequip-api.vercel.app/api/equipment/`);
+        if (!response.ok) throw new Error('Failed to fetch equipment', response.json);
+        const data = await response.json();
+        console.log(data);
+        setEquipmentList(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    equipList();
+  },[]);
   return (
     <div className='bg-white'>
      {/* Sidebar Placeholder - hidden on small screens */}
@@ -31,7 +49,7 @@ const EquipmentsPage = () => {
         
         {/* List of equipment cards directly under the heading */}
         <div className="flex flex-wrap gap-4 mt-4">
-          <EquipmentList data={equips} />
+          <EquipmentList data={equipmentList} />
         </div>
       </section>
     </div>
