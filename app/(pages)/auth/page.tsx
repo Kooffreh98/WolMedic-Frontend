@@ -11,39 +11,38 @@ import {
 
 const Accounts: FC = () => {
   return (
-    <div className="flex bg-white flex-col lg:flex-row">
-      {/* Sidebar Placeholder - hidden on small screens */}
+    <div className="flex bg-gray-100 flex-col lg:flex-row min-h-screen">
+      {/* Sidebar */}
       <Layout>
-        <div className="hidden w-full md:ml-64 w-1/4 bg-white p-4">
-          {/* Sidebar content here */}
+        <div className="hidden md:block md:w-1/4 bg-white shadow-lg">
+          {/* Sidebar content if needed */}
         </div>
       </Layout>
 
       {/* Main Content */}
-      <div className="w-full lg:ml-[22%] lg:w-3/4 p-2 pt-20 md:pt-20 lg:pt-20 space-y-4">
-        <div className="bg-white p-3 rounded-md shadow-md">
-          <h2 className="text-lg font-semibold text-black lg:text-xl lg:font-bold">
-            Accounts
-          </h2>
-          <div className="flex justify-between items-center pt-3">
-            <h3 className="text-sm font-semibold text-gray-700">All Users</h3>
-            <button className="text-black bg-green-400 px-3 py-1 rounded-md flex items-center space-x-1 border border-gray-300 hover:border-gray-400">
+      <div className="flex-1 lg:ml-[21%] p-6 space-y-6 pt-20">
+        {/* Accounts Section */}
+        <div className="bg-white p-6 rounded-lg shadow-md">
+          <h2 className="text-xl font-semibold text-gray-800">Accounts</h2>
+          <div className="flex justify-between items-center mt-4">
+            <h3 className="text-sm font-medium text-gray-600">All Users</h3>
+            <button className="text-gray-600 bg-gray-100 px-4 py-2 rounded-md flex items-center space-x-2 hover:bg-green-600 hover:text-white">
               <span>View All</span>
               <FontAwesomeIcon icon={faChevronRight} className="h-4 w-4" />
             </button>
           </div>
 
-          <div className="overflow-x-auto mt-2">
-            <table className="w-full border-collapse">
-              <thead>
-                <tr className="text-left text-gray-600">
-                  <th className="p-2 text-sm">Name</th>
-                  <th className="p-2 text-sm">Occupation</th>
-                  <th className="p-2 text-sm">Location</th>
-                  <th className="p-2 text-sm">Actions</th>
+          <div className="overflow-x-auto mt-4">
+            <table className="w-full border border-gray-200 rounded-xl overflow-hidden text-sm">
+              <thead className="bg-gray-100">
+                <tr>
+                  <th className="p-3 text-left text-gray-600">Name</th>
+                  <th className="p-3 text-left text-gray-600">Occupation</th>
+                  <th className="p-3 text-left text-gray-600">Location</th>
+                  <th className="p-3 text-left text-gray-600">Actions</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody className="rounded-lg">
                 {[
                   {
                     name: "Angela Bassett",
@@ -57,7 +56,7 @@ const Accounts: FC = () => {
                   },
                   {
                     name: "Joe Chin",
-                    occupation: "Gynacologist",
+                    occupation: "Gynecologist",
                     location: "Cuba",
                   },
                   {
@@ -71,15 +70,18 @@ const Accounts: FC = () => {
                     location: "Tokyo",
                   },
                 ].map((user, index) => (
-                  <tr key={index} className="border-t">
-                    <td className="p-2 text-sm">{user.name}</td>
-                    <td className="p-2 text-sm">{user.occupation}</td>
-                    <td className="p-2 text-sm">{user.location}</td>
-                    <td className="p-2 flex space-x-1 text-sm">
-                      <button className="flex items-center text-green-500 p-1">
+                  <tr
+                    key={index}
+                    className="border-t hover:bg-gray-50 rounded-lg"
+                  >
+                    <td className="p-3">{user.name}</td>
+                    <td className="p-3">{user.occupation}</td>
+                    <td className="p-3">{user.location}</td>
+                    <td className="p-3 flex space-x-3">
+                      <button className="text-green-500 bg-gray-100 hover:text-green-700 rounded-md">
                         <FontAwesomeIcon icon={faEye} className="h-4 w-4" />
                       </button>
-                      <button className="flex items-center text-red-500 p-1">
+                      <button className="text-red-500 bg-gray-100 hover:text-red-700 rounded-md">
                         <FontAwesomeIcon icon={faTrash} className="h-4 w-4" />
                       </button>
                     </td>
@@ -90,38 +92,40 @@ const Accounts: FC = () => {
           </div>
         </div>
 
-        <div className="bg-white p-3 shadow-md rounded-md">
-          <div className="flex justify-between items-center pt-3">
-            <h3 className="text-sm font-semibold text-gray-700">Top User</h3>
-            <button className="text-black bg-red-500 px-3 py-1 rounded-md flex items-center space-x-1 border border-gray-300 hover:border-gray-400">
+        {/* Top User Section */}
+        <div className="bg-white p-6 rounded-lg shadow-md">
+          <div className="flex justify-between items-center">
+            <h3 className="text-sm font-medium text-gray-600">Top User</h3>
+            <button className="text-white bg-red-500 px-4 py-2 rounded-md flex items-center space-x-2 hover:bg-red-600">
               <span>June</span>
               <FontAwesomeIcon icon={faChevronRight} className="h-4 w-4" />
             </button>
           </div>
 
-          <div className="overflow-x-auto mt-2">
-            <table className="w-full border-collapse">
-              <thead>
-                <tr className="text-left text-gray-600">
-                  <th className="p-2 text-sm">Username</th>
-                  <th className="p-2 text-sm">Searches</th>
-                  <th className="p-2 text-sm">Saved</th>
+          <div className="overflow-x-auto mt-4">
+            <table className="w-full border border-gray-200 rounded-xl text-sm">
+              <thead className="bg-gray-100">
+                <tr>
+                  <th className="p-3 text-left text-gray-600">Username</th>
+                  <th className="p-3 text-left text-gray-600">Searches</th>
+                  <th className="p-3 text-left text-gray-600">Saved</th>
                 </tr>
               </thead>
               <tbody>
-                {Array(5)
-                  .fill({
-                    username: "Jonathan Barks",
-                    searches: "500+",
-                    saved: 45,
-                  })
-                  .map((user, index) => (
-                    <tr key={index} className="border-t">
-                      <td className="p-2 text-sm">{user.username}</td>
-                      <td className="p-2 text-sm">{user.searches}</td>
-                      <td className="p-2 text-sm">{user.saved}</td>
-                    </tr>
-                  ))}
+                {Array.from({ length: 5 }, (_, i) => ({
+                  username: "Jonathan Barks",
+                  searches: "500+",
+                  saved: 45,
+                })).map((user, index) => (
+                  <tr
+                    key={index}
+                    className="border-t hover:bg-gray-50 rounded-lg"
+                  >
+                    <td className="p-3">{user.username}</td>
+                    <td className="p-3">{user.searches}</td>
+                    <td className="p-3">{user.saved}</td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>

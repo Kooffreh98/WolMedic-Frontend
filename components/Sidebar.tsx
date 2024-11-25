@@ -10,7 +10,11 @@ import { RiFirstAidKitLine } from "react-icons/ri";
 import { GoGear } from "react-icons/go";
 import { BiLogOut } from "react-icons/bi";
 
-const Sidebar = () => {
+interface SidebarProps {
+  className?: string;
+}
+
+const Sidebar = ({ className }: SidebarProps) => {
   const pathname = usePathname();
   const [isAccountsOpen, setIsAccountsOpen] = useState(false);
 
