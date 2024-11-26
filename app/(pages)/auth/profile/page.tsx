@@ -49,7 +49,7 @@ const UserDetailsPage: FC = () => {
             },
           }
         );
-        if (!response.ok) throw new Error('Failed to fetch equipment', response.json);
+        if (!response.ok) throw new Error('Failed to fetch User data', response.json);
         const data = await response.json();
         console.log(data);
         setUser(data);

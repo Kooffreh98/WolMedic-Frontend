@@ -5,7 +5,7 @@ import Layout from "app/(root)/layout";
 import EquipmentStepper from "@/components/EquipmentStepper";
 import Navbar from "@/components/Navbar";
 
-const BasicInformationPage = () => {
+const EquipmentDescriptionPage = () => {
   return (
     <Layout>
       <div className="flex-1 lg:ml-[20%] p-6 space-y-6 pt-20">
@@ -16,4 +16,4 @@ const BasicInformationPage = () => {
   );
 };
 
-export default BasicInformationPage;
+export default EquipmentDescriptionPage;

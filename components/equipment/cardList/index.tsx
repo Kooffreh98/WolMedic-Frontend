@@ -1,6 +1,7 @@
 
 import React from 'react'
 import EquipmentCard, { CardProps } from '../card';
+import { useRouter } from 'next/navigation';
 
 
 interface List {
@@ -8,11 +9,17 @@ interface List {
 }
 
 const EquipmentList = (props:List) => {
+  const router = useRouter();
 
   return (
     <section className='flex flex-wrap w-[90%] lg:pl-[10%] lg:pt-10 m-auto bg-transparent justify-start gap-4'>
         {props.data.map((item, index) => (
-            <EquipmentCard key={index} name={item.name} category={item.category} images={item.images} />
+            <EquipmentCard key={index} 
+             name={item.name} 
+             category={item.category} 
+             images={item.images}
+             id={item.id} 
+            />
         ))
         }
     </section>
