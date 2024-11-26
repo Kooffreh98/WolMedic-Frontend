@@ -2,6 +2,7 @@
 import React, {FormEvent, useState} from 'react';
 import InputField from '../../../../components/ui/InputField';
 import Button from '@/components/ui/Button';
+import { useSearchParams, useRouter } from "next/navigation";
 
 interface FormState {
     name: string;
@@ -12,7 +13,10 @@ interface FormState {
     useCases: string;
   }
 
-const CreateEquipment = () => {
+const UpdateEquipment = () => {
+  const searchParams = useSearchParams();
+  const id = searchParams?.get('id');
+  console.log(id);
   const [tag, setTag] = useState<string[]>([]);
   const [form, setForm] = useState<FormState>({
     name: '',
@@ -61,8 +65,8 @@ const CreateEquipment = () => {
     
     
     try {
-        const response = await fetch('https://medequip-api.vercel.app/api/equipment/',{
-          method: 'POST',
+        const response = await fetch(`https://medequip-api.vercel.app/api/equipment/${id}`,{
+          method: 'PUT',
           headers: {
             'Accept': 'application/json',
             'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
@@ -89,7 +93,7 @@ const CreateEquipment = () => {
       <div className='flex justify-center py-20'>    
         <div className='lg:w-[668px] md:w-[468px] py-8 px-8 bg-white rounded-[40px]'>
           <h2 className='text-center lg:text-[28px] md:text-[28px] sm:text-[28px] text-[23px]'>
-            Create an Equipment
+            Update an Equipment
           </h2>
 
           <p className='text-center lg:text-[16px] md:text-[16px] sm:text-[16px] text-[13px] pb-10'>
@@ -172,4 +176,4 @@ const CreateEquipment = () => {
   )
 }
 
-export default CreateEquipment;
+export default UpdateEquipment;
