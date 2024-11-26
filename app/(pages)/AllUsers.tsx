@@ -1,9 +1,12 @@
+"use client";
+import { useEffect, useState } from 'react';
 import { FC } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faTrash } from '@fortawesome/free-solid-svg-icons';
 import withAuth from '@/hoc/WithAuth';
 
 const AllUsers: FC = () => {
+  
   return (
     <div className="flex min-h-screen text-gray-800 text-sm">
 
